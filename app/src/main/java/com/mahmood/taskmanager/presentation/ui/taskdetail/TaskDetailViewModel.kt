@@ -8,6 +8,7 @@ import com.mahmood.taskmanager.domain.entity.Task
 import com.mahmood.taskmanager.domain.usecase.AddTaskUseCase
 import com.mahmood.taskmanager.domain.usecase.UpdateTaskUseCase
 import com.mahmood.taskmanager.domain.usecase.DeleteTaskUseCase
+import com.mahmood.taskmanager.domain.usecase.GetTaskByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,7 +17,8 @@ import javax.inject.Inject
 class TaskDetailViewModel @Inject constructor(
     private val addTaskUseCase: AddTaskUseCase,
     private val updateTaskUseCase: UpdateTaskUseCase,
-    private val deleteTaskUseCase: DeleteTaskUseCase
+    private val deleteTaskUseCase: DeleteTaskUseCase,
+    private val getTaskByIdUseCase: GetTaskByIdUseCase
 ) : ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
@@ -30,6 +32,9 @@ class TaskDetailViewModel @Inject constructor(
 
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
+
+    private val _loadedTask = MutableLiveData<Task?>()
+    val loadedTask: LiveData<Task?> = _loadedTask
 
     fun saveTask(task: Task) {
         viewModelScope.launch {
@@ -73,5 +78,19 @@ class TaskDetailViewModel @Inject constructor(
 
     fun resetError() {
         _error.value = null
+    }
+
+    fun loadTask(taskId: Long) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                val task = getTaskByIdUseCase(taskId)
+                _loadedTask.value = task
+            } catch (e: Exception) {
+                _error.value = e.message ?: "Failed to load task"
+            } finally {
+                _isLoading.value = false
+            }
+        }
     }
 }
