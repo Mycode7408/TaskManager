@@ -38,50 +38,35 @@ class TaskAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(task: Task) {
-            binding.apply {
-                titleText.text = task.title
-                descriptionText.text = task.description
-                
-                // Format dates
-                val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
-                dueDateText.text = dateFormat.format(Date(task.createdAt))
-                
-                // Set priority chip
-                priorityChip.text = task.priority.displayName
-                priorityChip.setChipBackgroundColorResource(
-                    when (task.priority) {
-                        Priority.HIGH -> R.color.priority_high
-                        Priority.MEDIUM -> R.color.priority_medium
-                        Priority.LOW -> R.color.priority_low
-                    }
-                )
-                priorityChip.setTextColor(ContextCompat.getColor(binding.root.context, android.R.color.white))
-                
-                // Set priority indicator color
-                priorityIndicator.setBackgroundColor(
-                    ContextCompat.getColor(binding.root.context,
-                        when (task.priority) {
-                            Priority.HIGH -> R.color.priority_high
-                            Priority.MEDIUM -> R.color.priority_medium
-                            Priority.LOW -> R.color.priority_low
-                        }
-                    )
-                )
-                
-                // Set completion status
-                completedCheckBox.isChecked = task.isCompleted
-                
-                // Show/hide completion overlay
-                completionOverlay.visibility = if (task.isCompleted) android.view.View.VISIBLE else android.view.View.GONE
-                
-                // Set click listeners
-                root.setOnClickListener { onTaskClick(task) }
-                completedCheckBox.setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked != task.isCompleted) {
-                        onTaskToggleComplete(task)
-                    }
+            binding.titleText.text = task.title
+            binding.descriptionText.text = task.description
+            
+            // Format dates - use createdAt for both due date and date
+            val dateFormat = SimpleDateFormat("MMM dd", Locale.getDefault())
+            val fullDateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+            
+            // Due date on the left (showing "Due: " prefix)
+            binding.dueDateText.text = "Due: ${dateFormat.format(Date(task.createdAt))}"
+            
+            // Date on the right (showing just the date)
+            binding.dateText.text = dateFormat.format(Date(task.createdAt))
+            
+            // Set priority chip
+            binding.priorityChip.text = task.priority.displayName.uppercase()
+            binding.priorityChip.setChipBackgroundColorResource(
+                when (task.priority) {
+                    Priority.HIGH -> R.color.priority_high
+                    Priority.MEDIUM -> R.color.priority_medium
+                    Priority.LOW -> R.color.priority_low
                 }
-            }
+            )
+            binding.priorityChip.setTextColor(ContextCompat.getColor(binding.root.context, android.R.color.white))
+            
+            // Show/hide completion checkmark
+            binding.completionCheckmark.visibility = if (task.isCompleted) android.view.View.VISIBLE else android.view.View.GONE
+            
+            // Set click listeners
+            binding.root.setOnClickListener { onTaskClick(task) }
         }
     }
 

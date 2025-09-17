@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -94,7 +95,6 @@ class TaskListFragment : Fragment() {
                 } else {
                     GridLayoutManager(requireContext(), 2)
                 }
-                binding.viewToggleButton.text = if (viewType == ViewType.LIST) "Grid" else "List"
                 binding.viewToggleButton.setIconResource(
                     if (viewType == ViewType.LIST) R.drawable.ic_grid_view else R.drawable.ic_list_view
                 )
@@ -133,9 +133,20 @@ class TaskListFragment : Fragment() {
         }
     }
 
-    private fun clearOtherChips(selectedChip: com.google.android.material.chip.Chip) {
-        binding.filterChipGroup.clearCheck()
-        selectedChip.isChecked = true
+    private fun clearOtherChips(selectedButton: com.google.android.material.button.MaterialButton) {
+        // Reset all buttons to unselected state
+        binding.allChip.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.surface_variant))
+        binding.allChip.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_secondary))
+        
+        binding.completedChip.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.surface_variant))
+        binding.completedChip.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_secondary))
+        
+        binding.pendingChip.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.surface_variant))
+        binding.pendingChip.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_secondary))
+        
+        // Set selected button to selected state
+        selectedButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.gray))
+        selectedButton.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white))
     }
 
     override fun onDestroyView() {
