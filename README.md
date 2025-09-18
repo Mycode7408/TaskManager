@@ -137,6 +137,7 @@ app/src/main/java/com/mahmood/taskmanager/
 ./gradlew test
 ```
 
+
 ## 📊 Database Schema
 
 The app uses Room database with the following schema:
@@ -199,13 +200,6 @@ CREATE TABLE tasks (
 3. Increment database version
 4. Add migration scripts
 
-
-The app includes:
-- Modern task list with search and filtering
-- Clean task detail form with validation
-- Priority-based color coding
-- Responsive grid and list views
-- Material Design 3 components
 
 ## 👨‍💻 Author
 
