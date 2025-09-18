@@ -138,7 +138,6 @@ app/src/main/java/com/mahmood/taskmanager/
 ```
 
 
-
 ## 📊 Database Schema
 
 The app uses Room database with the following schema:
@@ -216,4 +215,3 @@ CREATE TABLE tasks (
 
 ---
 
-**This Task Manager app demonstrates professional Android development practices with Clean Architecture, MVVM pattern, and modern UI design. Perfect for showcasing your Android development skills!** 🚀
