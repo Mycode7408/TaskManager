@@ -84,7 +84,13 @@ class TaskDetailFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+        viewModel.loadedTask.observe(viewLifecycleOwner) { task ->
+            task?.let {
+                populateForm(it)
+            }
+        }
+
+        viewModel.isLoading.observe(viewLifecycleOwner) { _ ->
             // Loading state can be handled with UI feedback if needed
         }
 
@@ -113,8 +119,18 @@ class TaskDetailFragment : Fragment() {
     }
 
     private fun loadTask() {
-        // In a real app, you would load the task from the database
-        // For now, we'll just show the form
+        viewModel.loadTask(taskId)
+    }
+
+    private fun populateForm(task: Task) {
+        binding.titleEditText.setText(task.title)
+        binding.descriptionEditText.setText(task.description)
+        binding.prioritySpinner.setText(task.priority.displayName, false)
+        binding.completedSwitch.isChecked = task.isCompleted
+        
+        // Format and set due date
+        val dateFormat = java.text.SimpleDateFormat("MM/dd/yyyy", java.util.Locale.getDefault())
+        binding.dueDateEditText.setText(dateFormat.format(java.util.Date(task.createdAt)))
     }
 
     private fun saveTask() {

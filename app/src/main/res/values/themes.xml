@@ -12,4 +12,5 @@
     </style>
 
     <style name="Theme.TaskManager" parent="Base.Theme.TaskManager" />
+
 </resources>

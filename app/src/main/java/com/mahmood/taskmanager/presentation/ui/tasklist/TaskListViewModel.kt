@@ -47,11 +47,11 @@ class TaskListViewModel @Inject constructor(
             try {
                 getAllTasksUseCase().collect { taskList ->
                     _tasks.value = taskList
+                    _isLoading.value = false
                 }
             } catch (e: Exception) {
-                // Handle error
-            } finally {
                 _isLoading.value = false
+                // Handle error
             }
         }
     }
@@ -59,12 +59,19 @@ class TaskListViewModel @Inject constructor(
     fun searchTasks(query: String) {
         _searchQuery.value = query
         viewModelScope.launch {
-            if (query.isBlank()) {
-                loadTasks()
-            } else {
-                searchTasksUseCase(query).collect { taskList ->
-                    _tasks.value = taskList
+            _isLoading.value = true
+            try {
+                if (query.isBlank()) {
+                    loadTasks()
+                } else {
+                    searchTasksUseCase(query).collect { taskList ->
+                        _tasks.value = taskList
+                        _isLoading.value = false
+                    }
                 }
+            } catch (e: Exception) {
+                _isLoading.value = false
+                // Handle error
             }
         }
     }
@@ -72,8 +79,15 @@ class TaskListViewModel @Inject constructor(
     fun filterTasks(filterType: FilterType) {
         _filterType.value = filterType
         viewModelScope.launch {
-            filterTasksUseCase(filterType).collect { taskList ->
-                _tasks.value = taskList
+            _isLoading.value = true
+            try {
+                filterTasksUseCase(filterType).collect { taskList ->
+                    _tasks.value = taskList
+                    _isLoading.value = false
+                }
+            } catch (e: Exception) {
+                _isLoading.value = false
+                // Handle error
             }
         }
     }
