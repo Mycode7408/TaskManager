@@ -213,7 +213,6 @@ CREATE TABLE tasks (
 3. Increment database version
 4. Add migration scripts
 
-## 📱 Screenshots
 
 The app includes:
 - Modern task list with search and filtering
@@ -221,18 +220,6 @@ The app includes:
 - Priority-based color coding
 - Responsive grid and list views
 - Material Design 3 components
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 👨‍💻 Author
 
@@ -248,4 +235,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**This Task Manager app demonstrates professional Android development practices with Clean Architecture, MVVM pattern, and modern UI design. Perfect for showcasing your Android development skills!** 🚀
