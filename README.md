@@ -137,19 +137,7 @@ app/src/main/java/com/mahmood/taskmanager/
 ./gradlew test
 ```
 
-## 🧪 Testing
 
-The project includes comprehensive testing setup:
-
-- **Unit Tests**: Test business logic and use cases
-- **Integration Tests**: Test database operations
-- **UI Tests**: Test user interactions and navigation
-
-Run tests:
-```bash
-./gradlew test
-./gradlew connectedAndroidTest
-```
 
 ## 📊 Database Schema
 
@@ -213,26 +201,6 @@ CREATE TABLE tasks (
 3. Increment database version
 4. Add migration scripts
 
-## 📱 Screenshots
-
-The app includes:
-- Modern task list with search and filtering
-- Clean task detail form with validation
-- Priority-based color coding
-- Responsive grid and list views
-- Material Design 3 components
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 👨‍💻 Author
 
