@@ -137,20 +137,6 @@ app/src/main/java/com/mahmood/taskmanager/
 ./gradlew test
 ```
 
-## 🧪 Testing
-
-The project includes comprehensive testing setup:
-
-- **Unit Tests**: Test business logic and use cases
-- **Integration Tests**: Test database operations
-- **UI Tests**: Test user interactions and navigation
-
-Run tests:
-```bash
-./gradlew test
-./gradlew connectedAndroidTest
-```
-
 ## 📊 Database Schema
 
 The app uses Room database with the following schema:
