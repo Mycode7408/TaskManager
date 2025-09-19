@@ -215,6 +215,18 @@ CREATE TABLE tasks (
 
 ## 📱 Screenshots
 
+### Task List Screen
+![Task List Screen](Screenshot_20250919_114415.png)
+*Main task list with search functionality, filter chips, and view toggle*
+
+### Task Detail Screen
+![Task Detail Screen](Screenshot_20250919_114458.png)
+*Task creation/editing form with priority selection and date picker*
+
+### Task Management Features
+![Task Management Features](Screenshot_20250919_114511.png)
+*Task filtering, completion status, and priority color coding*
+
 The app includes:
 - Modern task list with search and filtering
 - Clean task detail form with validation
