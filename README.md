@@ -200,6 +200,38 @@ CREATE TABLE tasks (
 3. Increment database version
 4. Add migration scripts
 
+## 📱 Screenshots
+
+### Task List Screen
+![Task List Screen](Screenshot_20250919_114415.png)
+*Main task list with search functionality, filter chips, and view toggle*
+
+### Task Detail Screen
+![Task Detail Screen](Screenshot_20250919_114458.png)
+*Task creation/editing form with priority selection and date picker*
+
+### Task Management Features
+![Task Management Features](Screenshot_20250919_114511.png)
+*Task filtering, completion status, and priority color coding*
+
+The app includes:
+- Modern task list with search and filtering
+- Clean task detail form with validation
+- Priority-based color coding
+- Responsive grid and list views
+- Material Design 3 components
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 👨‍💻 Author
 
