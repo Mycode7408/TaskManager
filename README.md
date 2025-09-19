@@ -137,19 +137,6 @@ app/src/main/java/com/mahmood/taskmanager/
 ./gradlew test
 ```
 
-## 🧪 Testing
-
-The project includes comprehensive testing setup:
-
-- **Unit Tests**: Test business logic and use cases
-- **Integration Tests**: Test database operations
-- **UI Tests**: Test user interactions and navigation
-
-Run tests:
-```bash
-./gradlew test
-./gradlew connectedAndroidTest
-```
 
 ## 📊 Database Schema
 
@@ -260,4 +247,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**This Task Manager app demonstrates professional Android development practices with Clean Architecture, MVVM pattern, and modern UI design. Perfect for showcasing your Android development skills!** 🚀
